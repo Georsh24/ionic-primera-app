@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ChildActivationStart } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -8,10 +9,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class PostComponent implements OnInit {
 
   @Input() mensaje:any;
+  @Output() clickPost = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClick(){
+    this.clickPost.emit(this.mensaje.id);
   }
 
 }
